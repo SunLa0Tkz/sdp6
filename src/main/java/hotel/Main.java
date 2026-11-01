@@ -21,6 +21,7 @@ import hotel.tree.Hall;
 import hotel.tree.Hotel;
 import hotel.tree.Restaurant;
 import hotel.tree.Room;
+import hotel.tree.Spa;
 import hotel.tree.Suite;
 import hotel.visitor.FreeUnitsVisitor;
 import hotel.visitor.JsonExportVisitor;
@@ -118,6 +119,7 @@ public class Main {
                 new Floor(3, List.of(
                         new Room("301", 2, 90),
                         new Suite("S31", 2, 4, 320, 40),
-                        new Suite("S32", 3, 6, 450, 60)))));
+                        new Suite("S32", 3, 6, 450, 60),
+                        new Spa("SP1", 3, 120)))));
     }
 }

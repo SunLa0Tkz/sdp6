@@ -7,6 +7,7 @@ import hotel.tree.Hotel;
 import hotel.tree.HotelElement;
 import hotel.tree.Restaurant;
 import hotel.tree.Room;
+import hotel.tree.Spa;
 import hotel.tree.Suite;
 
 import java.util.List;
@@ -50,6 +51,12 @@ public class JsonExportVisitor implements Visitor<String> {
     public String visitRestaurant(Restaurant restaurant) {
         return unit("restaurant", restaurant.id(),
                 "\"seats\":" + restaurant.seats() + ",\"averageCheck\":" + restaurant.averageCheck());
+    }
+
+    @Override
+    public String visitSpa(Spa spa) {
+        return unit("spa", spa.id(),
+                "\"treatmentRooms\":" + spa.treatmentRooms() + ",\"dailyRatePerRoom\":" + spa.dailyRatePerRoom());
     }
 
     private String unit(String type, String id, String fields) {

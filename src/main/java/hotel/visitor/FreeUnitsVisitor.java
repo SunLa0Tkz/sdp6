@@ -5,6 +5,7 @@ import hotel.tree.Hall;
 import hotel.tree.HotelElement;
 import hotel.tree.Restaurant;
 import hotel.tree.Room;
+import hotel.tree.Spa;
 import hotel.tree.Suite;
 
 import java.util.ArrayList;
@@ -50,6 +51,11 @@ public class FreeUnitsVisitor extends TreeFold<List<HotelElement>> {
 
     @Override
     public List<HotelElement> visitRestaurant(Restaurant restaurant) {
+        return List.of();
+    }
+
+    @Override
+    public List<HotelElement> visitSpa(Spa spa) {
         return List.of();
     }
 

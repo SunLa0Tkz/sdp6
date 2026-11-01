@@ -7,6 +7,7 @@ import hotel.tree.Hotel;
 import hotel.tree.HotelElement;
 import hotel.tree.Restaurant;
 import hotel.tree.Room;
+import hotel.tree.Spa;
 import hotel.tree.Suite;
 
 import java.util.ArrayList;
@@ -56,6 +57,11 @@ public class CleaningPlanVisitor implements Visitor<Integer> {
     @Override
     public Integer visitRestaurant(Restaurant restaurant) {
         return planIfDirty(restaurant.id(), 45 + restaurant.seats() / 2);
+    }
+
+    @Override
+    public Integer visitSpa(Spa spa) {
+        return planIfDirty(spa.id(), 20 * spa.treatmentRooms());
     }
 
     private int planIfDirty(String unitId, int minutes) {

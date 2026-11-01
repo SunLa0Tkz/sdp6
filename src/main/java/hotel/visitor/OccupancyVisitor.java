@@ -4,6 +4,7 @@ import hotel.rooms.UnitStatus;
 import hotel.tree.Hall;
 import hotel.tree.Restaurant;
 import hotel.tree.Room;
+import hotel.tree.Spa;
 import hotel.tree.Suite;
 
 import java.util.function.Function;
@@ -44,6 +45,11 @@ public class OccupancyVisitor extends TreeFold<OccupancyReport> {
 
     @Override
     public OccupancyReport visitRestaurant(Restaurant restaurant) {
+        return NOT_COUNTED;
+    }
+
+    @Override
+    public OccupancyReport visitSpa(Spa spa) {
         return NOT_COUNTED;
     }
 

@@ -4,6 +4,7 @@ import hotel.rooms.UnitStatus;
 import hotel.tree.Hall;
 import hotel.tree.Restaurant;
 import hotel.tree.Room;
+import hotel.tree.Spa;
 import hotel.tree.Suite;
 
 import java.util.function.Function;
@@ -41,13 +42,19 @@ public class RevenueVisitor extends TreeFold<Long> {
         return ifOccupied(hall.id(), hall.dayRate());
     }
 
-    // the restaurant earns without bookings, unless it is closed
     @Override
     public Long visitRestaurant(Restaurant restaurant) {
-        if (statuses.apply(restaurant.id()) == UnitStatus.OUT_OF_ORDER) {
-            return 0L;
-        }
-        return restaurant.seats() * restaurant.averageCheck();
+        return ifOpen(restaurant.id(), restaurant.seats() * restaurant.averageCheck());
+    }
+
+    @Override
+    public Long visitSpa(Spa spa) {
+        return ifOpen(spa.id(), spa.treatmentRooms() * spa.dailyRatePerRoom());
+    }
+
+    // restaurant and spa earn without bookings, unless they are closed
+    private long ifOpen(String unitId, long income) {
+        return statuses.apply(unitId) == UnitStatus.OUT_OF_ORDER ? 0L : income;
     }
 
     private long ifOccupied(String unitId, long income) {

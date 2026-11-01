@@ -5,6 +5,7 @@ import hotel.tree.Hall;
 import hotel.tree.Hotel;
 import hotel.tree.Restaurant;
 import hotel.tree.Room;
+import hotel.tree.Spa;
 import hotel.tree.Suite;
 
 public interface Visitor<R> {
@@ -19,4 +20,6 @@ public interface Visitor<R> {
     R visitHall(Hall hall);
 
     R visitRestaurant(Restaurant restaurant);
+
+    R visitSpa(Spa spa);
 }
